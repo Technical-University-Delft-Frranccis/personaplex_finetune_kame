@@ -16,22 +16,22 @@ def main():
 
     #adapts kame's finetuning which only uses dep_q = 8 (moshi base)
     # hence we need to update the kwargs
-    kwargs = deepcopy(loaders._lmkwargs)
-    kwargs.update(dep_q=16,depformer_contex=16)
+    kwargs = deepcopy(loaders._lm_kwargs)
+    kwargs.update(dep_q=16,depformer_context=16)
     
     lm = LMModel(device="cpu",dtype=dtype,**kwargs)
     sd = load_file(a.src,device="cpu")
     result = lm.load_state_dict(sd,strict=False) #split fused attention weights from personaplex
     oracle_missing = validate_oracle_embedding_checkpoint_load(
-        lm,missing_keys = result.missing_keys, unexpected=result.unexpected_keys,
+        lm,missing_keys = result.missing_keys, unexpected_keys=result.unexpected_keys,
         context=f"loading{a.src}",
     )
     assert not oracle_missing, "checkpoint must already contain oracle_emb"
     assert torch.equal(lm.oracle_emb.weight,sd["oracle_emb.weight"].to(dtype))
 
-    ft = MoshiForFinetuning.from_original_moshi_lm(moshi_lm = lm, mosi_lm_kwargs = kwargs)
+    ft = MoshiForFinetuning.from_original_moshi_lm(moshi_lm = lm, moshi_lm_kwargs = kwargs)
     ft.save_pretrained(a.save_dir) #json of safetensors + kwargs
     print(f"kame_compatible_finetune_model --> {a.save_dir}")
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     main()
