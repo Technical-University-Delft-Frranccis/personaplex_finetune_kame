@@ -35,3 +35,6 @@ slurm-*.err
 
 /outputs/
 /logs/
+.venv-tts/
+.ipynb_checkpoints/
+tools/.ipynb_checkpoints/

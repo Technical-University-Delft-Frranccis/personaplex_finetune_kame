@@ -31,7 +31,7 @@ class SpeakerVerifier:
         return torch.nn.functional.normalize(self.model(**inputs).embeddings, dim=-1)[0].cpu()
 
     def embed_file(self, path: str) -> torch.Tensor:
-        wav, sr = torchaudio.load(path)
+        wav, sr = torchaudio.load(path, backend="soundfile")
         return self.embed(wav, sr)
 
     @staticmethod
