@@ -1,0 +1,12 @@
+[
+  {"voice_id": "pax_m_03", "role": "passenger", "tier": "hero",
+   "description": "Male, about 45, British English, low baritone, slightly gravelly, speaks quickly"},
+  {"voice_id": "pax_f_01", "role": "passenger", "tier": "hero",
+   "description": "Female, about 35, American English, mid alto, clear and direct"},
+  {"voice_id": "pax_m_07", "role": "passenger", "tier": "pool",
+   "description": "Male, about 25, Irish English, light tenor, relaxed"},
+  {"voice_id": "crew_f_01", "role": "crew", "tier": "pool",
+   "description": "Female, about 30, Dutch-accented English, calm professional mezzo"},
+  {"voice_id": "crew_m_02", "role": "crew", "tier": "pool",
+   "description": "Male, about 40, Dutch-accented English, warm tenor, measured pace"}
+]
