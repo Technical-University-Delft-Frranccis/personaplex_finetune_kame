@@ -89,14 +89,18 @@ def load_clip(path: Path) -> torch.Tensor:
     return wav
 
 
-def quality_ok(turn_text: str, words: list, dur: float) -> str | None:
+def quality_ok(turn_text: str, words: list, dur: float, is_backchannel: bool = False) -> str | None:
     n_script = len([w for w in turn_text.split() if any(c.isalpha() for c in w)])
+    # for w in words:
+    #     print(w)
     if n_script == 0:
         return "no words"
     if len(words) < 0.9 * n_script:
         return f"aligned {len(words)}/{n_script} words"
-    if dur > 1.2 + 1.0 * n_script:  # > ~1 s per word: TTS rambled or hung
+    if dur > 1.2 + 1.0 * n_script:
         return f"clip too long ({dur:.1f}s for {n_script} words)"
+    if is_backchannel:
+        return None  # MMS alignment confidence isn't meaningful for non-lexical fillers
     mean_score = sum(w.score for w in words) / max(1, len(words))
     if mean_score < 0.35:
         return f"low alignment confidence {mean_score:.2f} (TTS mispronounced or skipped words)"
@@ -179,8 +183,9 @@ def process(dlg_dir: Path, aligner: WordAligner, voices: dict, out_dir: Path,
     manifest = json.loads((dlg_dir / "manifest.json").read_text())
     script = manifest["script"]
     did = script["id"]
-    if (out_dir / "meta" / f"{did}.json").exists():
-        return "skipped (done)"
+    # commented out to run again
+    # if (out_dir / "meta" / f"{did}.json").exists():
+    #     return "skipped (done)"
     rng = random.Random(did)
 
     placements: list[Placement] = []
@@ -188,7 +193,7 @@ def process(dlg_dir: Path, aligner: WordAligner, voices: dict, out_dir: Path,
         spk = ROLE_TO_SPK[turn["speaker"]]
         clip = trim_silence(load_clip(dlg_dir / clip_name))
         words = aligner.align(clip[None], SR, turn["text"])
-        bad = quality_ok(turn["text"], words, clip.numel() / SR)
+        bad = quality_ok(turn["text"], words, clip.numel() / SR, is_backchannel=turn.get("backchannel", False))
         if bad:
             return f"REJECTED turn {i}: {bad}"
         if spk == "A":

@@ -15,18 +15,21 @@ FT_INIT=/workspace/ft_init             # from tools/init_for_ft.py (already done
 #python patches/apply_prompt_mask_patch.py utils/data.py
 
 # --- 0b. voice bank (TTS venv): design voices, fix anchors, emotion references
-#   source .venv-tts/bin/activate
-#python -m tools.build_voice_bank --spec $DATA/voice_specs.json --out_dir $DATA/voices --registry $VOICES
+source .venv-tts/bin/activate
+python -m tools.build_voice_bank --spec $DATA/voice_specs.json --out_dir $DATA/voices --registry $VOICES
 #   -> LISTEN to $DATA/voices/*/ ; delete an entry from voices.json to rebuild that voice
 
 # --- 1. render turns (TTS venv), one process per GPU
 .venv-tts/bin/python -m tools.synthesize_turns --scripts_dir $DATA/scripts --voices $VOICES \
   --out_dir $DATA/turns --device cuda:0 --shard 0 --num_shards 1 --min_similarity 0
-#   deactivate 
+deactivate 
 
 source .venv/bin/activate
 # --- 2. align + assemble (kame-finetune venv; uv pip install pyloudnorm)
-uv run --no-sync -m tools.assemble_dialogues --turns_dir $DATA/turns --voices $VOICES --out_dir $DATA
+# uv run --no-sync -m tools.assemble_dialogues --turns_dir $DATA/turns --voices $VOICES --out_dir $DATA
+
+uv run -m tools.assemble_dialogues --turns_dir data/cabin/turns \
+    --voices data/cabin/voices.json --out_dir data/cabin --device cpu
 
 exit 0
 
