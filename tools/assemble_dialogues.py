@@ -106,20 +106,81 @@ def quality_ok(turn_text: str, words: list, dur: float, is_backchannel: bool = F
         return f"low alignment confidence {mean_score:.2f} (TTS mispronounced or skipped words)"
     return None
 
+"""Drop-in replacement for place_turns() in tools/assemble_dialogues.py.
 
-def place_turns(placements: list[Placement], rng: random.Random, lead_in: float = 0.4) -> None:
+Copy _norm, _at_time, _pause_time, PRECUT_ENDINGS and place_turns over the existing place_turns
+(nothing else in the file changes).
+
+What changes and why:
+1. Backchannels. The old code put them at a random 35-75 % of the floor turn, which is how the
+   "Mm-hm" landed in the middle of "like everyone else". Now:
+     a. if the script gives "at", the backchannel starts 0.05-0.25 s after the aligned end of those
+        words in the floor turn;
+     b. otherwise it snaps to the longest pause between aligned words in the 30-85 % window;
+     c. only if neither works does it fall back to the old random position.
+2. Interruptions. The old code cut the floor turn at 45-80 % of its audio, so the interrupter could
+   react to words the listener never heard ("Enough?" when "enough" had been cut). The new prompt
+   writes the interrupted turn only up to where it stops, ending in "...". For such pre-cut turns
+   the interrupter now overlaps the last 0.15-0.4 s and the trailing-off tail is cut, which sounds
+   abrupt instead of like a polite fade. Turns without "..." keep the old behaviour, so old scripts
+   still assemble.
+"""
+
+PRECUT_ENDINGS = ("...", "\u2026", "-")
+
+
+def _norm(word: str) -> str:
+    return "".join(c for c in word.lower() if c.isalnum() or c == "'")
+
+
+def _at_time(floor, at: str | None) -> float | None:
+    """Clip-relative end time of the phrase `at` inside the floor turn's aligned words."""
+    if not at:
+        return None
+    target = [w for w in (_norm(x) for x in at.split()) if w]
+    got = [_norm(w.word) for w in floor.words]
+    if not target:
+        return None
+    for i in range(len(got) - len(target), -1, -1):  # last occurrence
+        if got[i:i + len(target)] == target:
+            return floor.words[i + len(target) - 1].end
+    return None
+
+
+def _pause_time(floor, lo: float = 0.30, hi: float = 0.85) -> float | None:
+    """Clip-relative time in the middle of the longest inter-word pause in [lo, hi] of the turn."""
+    best, best_gap = None, 0.08  # ignore pauses shorter than 80 ms
+    for a, b in zip(floor.words, floor.words[1:]):
+        gap = b.start - a.end
+        mid = (a.end + b.start) / 2
+        if lo * floor.dur <= mid <= hi * floor.dur and gap > best_gap:
+            best, best_gap = a.end, gap
+    return best
+
+
+def place_turns(placements, rng, lead_in: float = 0.4) -> None:
     """Assign absolute start times; mark interrupted turns with cut_at."""
-    floor: Placement | None = None          # last non-backchannel turn
-    chan_end = {"A": 0.0, "B": 0.0}          # a speaker never overlaps themselves
+    floor = None                      # last non-backchannel turn
+    chan_end = {"A": 0.0, "B": 0.0}   # a speaker never overlaps themselves
     for p in placements:
         t = p.turn
         if floor is None:
             start = lead_in
         elif p.backchannel:
-            start = floor.start + rng.uniform(0.35, 0.75) * floor.dur
+            rel = _at_time(floor, t.get("at"))
+            if rel is None:
+                rel = _pause_time(floor)
+            if rel is not None:
+                start = floor.start + rel + rng.uniform(0.05, 0.25)
+            else:
+                start = floor.start + rng.uniform(0.35, 0.75) * floor.dur
         elif t.get("interrupts") and floor.spk != p.spk and floor.dur >= 1.2:
-            start = floor.start + max(0.6, rng.uniform(0.45, 0.8) * floor.dur)
-            floor.cut_at = min(floor.start + floor.dur, start + rng.uniform(0.25, 0.5))
+            if floor.turn.get("text", "").rstrip().endswith(PRECUT_ENDINGS):
+                start = floor.start + floor.dur - rng.uniform(0.15, 0.4)
+                floor.cut_at = min(floor.start + floor.dur, start + rng.uniform(0.08, 0.2))
+            else:  # legacy scripts: cut somewhere in the turn
+                start = floor.start + max(0.6, rng.uniform(0.45, 0.8) * floor.dur)
+                floor.cut_at = min(floor.start + floor.dur, start + rng.uniform(0.25, 0.5))
             chan_end[floor.spk] = floor.cut_at
         else:
             gap = t.get("gap_s")
@@ -132,6 +193,32 @@ def place_turns(placements: list[Placement], rng: random.Random, lead_in: float 
         chan_end[p.spk] = p.start + p.dur
         if not p.backchannel:
             floor = p
+
+# def place_turns(placements: list[Placement], rng: random.Random, lead_in: float = 0.4) -> None:
+#     """Assign absolute start times; mark interrupted turns with cut_at."""
+#     floor: Placement | None = None          # last non-backchannel turn
+#     chan_end = {"A": 0.0, "B": 0.0}          # a speaker never overlaps themselves
+#     for p in placements:
+#         t = p.turn
+#         if floor is None:
+#             start = lead_in
+#         elif p.backchannel:
+#             start = floor.start + rng.uniform(0.35, 0.75) * floor.dur
+#         elif t.get("interrupts") and floor.spk != p.spk and floor.dur >= 1.2:
+#             start = floor.start + max(0.6, rng.uniform(0.45, 0.8) * floor.dur)
+#             floor.cut_at = min(floor.start + floor.dur, start + rng.uniform(0.25, 0.5))
+#             chan_end[floor.spk] = floor.cut_at
+#         else:
+#             gap = t.get("gap_s")
+#             gap = rng.uniform(0.2, 0.8) if gap is None else float(gap)
+#             if floor.spk == p.spk:
+#                 gap = max(gap, 0.15)
+#             start = floor.end + gap
+#         start = max(start, chan_end[p.spk] + 0.05)
+#         p.start = round(start, 3)
+#         chan_end[p.spk] = p.start + p.dur
+#         if not p.backchannel:
+#             floor = p
 
 
 def render(placements: list[Placement], tail: float = 0.6) -> np.ndarray:

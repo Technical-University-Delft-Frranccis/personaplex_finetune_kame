@@ -45,31 +45,47 @@ NEUTRAL_TEXT = ("Good evening. I think this is my seat, twelve C, next to the wi
                 "It has been a long day, so I am just glad to finally sit down.")
 
 # (emotion, intensity) -> (direction appended to the voice description, line to speak)
+"""Replacement for EMOTION_LEVELS in tools/build_voice_bank.py.
+
+Why: Qwen3-TTS Base copies the DELIVERY of its reference clip, so every angry passenger turn
+inherits the rhythm of the angry_* reference. The old lines were stiff ("You cannot just tell
+me", "Do not talk to me like that") and two were exactly the clichés we removed from the scripts
+("I paid for this seat like everybody else", "Everyone is looking at me now, thanks a lot").
+These lines use contractions, fragments and short phrases, like the new scripts do.
+Also added: sad_2 (grief scenarios), anxious_3 is deliberately not added (prompt caps at
+"raised and sharp", panic is out of scope).
+
+After replacing: delete the hero entries from voices.json (or use a new registry) and rebuild
+them; the neutral anchors and prompt.wav files can stay if you keep the same seeds.
+"""
+
 EMOTION_LEVELS: dict[tuple[str, int], tuple[str, str]] = {
     ("irritated", 1): ("Mildly irritated, clipped and impatient.",
-                       "Excuse me. I asked for water twenty minutes ago. Is it still coming?"),
+                       "Sorry, I asked for water a while ago. Is that still coming or not?"),
     ("irritated", 2): ("Clearly irritated, sharp tone, sighing between phrases.",
-                       "No, that is not what I asked. I have asked three times now."),
+                       "No. That's not what I asked. I've asked three times now."),
     ("angry", 2): ("Angry, raised voice, fast and forceful.",
-                   "You cannot just tell me to sit down. I paid for this seat like everybody else."),
+                   "No, don't tell me to sit down. I'm not doing anything wrong here."),
     ("angry", 3): ("Very angry, loud and sharp, almost shouting but not screaming.",
-                   "Do not talk to me like that! Everyone is looking at me now, thanks a lot!"),
+                   "Don't talk to me like that. Seriously. Don't. I'm not a child."),
     ("anxious", 1): ("Slightly anxious, quick breathing, uncertain.",
-                     "Sorry, is that noise normal? The wing is making a strange sound."),
+                     "Sorry, is that noise normal? The wing's making this weird sound."),
     ("anxious", 2): ("Very anxious, tense and fast, voice trembling a little.",
-                     "I really need to know what is happening. Are we going to be okay?"),
+                     "I just need to know what's going on. Are we okay? Are we actually okay?"),
     ("distressed", 2): ("Distressed, voice breaking, struggling to stay composed.",
-                        "My daughter was supposed to be on this flight. I cannot reach her. I just, I cannot."),
+                        "I can't reach her. She's not answering. I just, I can't..."),
     ("sad", 1): ("Quietly sad, slow and low.",
-                 "I am flying home for my father's funeral. I just want this flight to be over."),
+                 "It's fine. I'm just flying home for my dad's funeral. I'm a bit tired."),
+    ("sad", 2): ("Sad, voice low and unsteady, long pauses.",
+                 "Sorry. I'm sorry. It's just, it was really sudden. I don't want anything."),
     ("sulking", 1): ("Sulking, flat and short, reluctant.",
                      "Fine. Whatever. Just bring the sandwich then."),
     ("embarrassed", 1): ("Embarrassed, softer and hesitant, trailing off.",
-                         "Oh. Right. Sorry, I did not realise everyone could hear me."),
+                         "Oh. Right. Sorry, I didn't realise everyone could hear that."),
     ("relieved", 1): ("Relieved, exhaling, warmer tone.",
-                      "Oh thank goodness. Okay. Thank you, that really helps."),
+                      "Oh, thank God. Okay. Okay, that really helps, thanks."),
     ("grateful", 1): ("Warm and grateful, sincere.",
-                      "Thank you so much for sorting that out, I really appreciate it."),
+                      "Honestly, thank you. You didn't have to do that."),
 }
 
 
