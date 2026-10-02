@@ -1,0 +1,194 @@
+[
+ {
+  "voice_id": "hero_01",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 30, General American English, bright mezzo, quick and expressive"
+ },
+ {
+  "voice_id": "hero_02",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 45, General American English, warm baritone, measured"
+ },
+ {
+  "voice_id": "hero_03",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 58, General American English, warm alto, unhurried"
+ },
+ {
+  "voice_id": "hero_04",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 28, General American English, light tenor, fast"
+ },
+ {
+  "voice_id": "hero_05",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 62, General American English, deep, slightly gravelly baritone"
+ },
+ {
+  "voice_id": "hero_06",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "gb",
+  "description": "Female, about 38, Standard Southern British English, clear mezzo, precise"
+ },
+ {
+  "voice_id": "hero_07",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "gb",
+  "description": "Male, about 50, Standard Southern British English, dry baritone, slow"
+ },
+ {
+  "voice_id": "hero_08",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "gb",
+  "description": "Female, about 66, Standard Southern British English, soft, older alto"
+ },
+ {
+  "voice_id": "hero_09",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "au",
+  "description": "Male, about 35, Australian English, relaxed tenor"
+ },
+ {
+  "voice_id": "hero_10",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "au",
+  "description": "Female, about 42, Australian English, mid pitch, easy-going"
+ },
+ {
+  "voice_id": "pool_01",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 34, General American English, mid mezzo, clear"
+ },
+ {
+  "voice_id": "pool_02",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 29, General American English, light baritone"
+ },
+ {
+  "voice_id": "pool_03",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 52, General American English, calm alto"
+ },
+ {
+  "voice_id": "pool_04",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 41, General American English, even baritone"
+ },
+ {
+  "voice_id": "pool_05",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "gb",
+  "description": "Female, about 27, Standard Southern British English, bright soprano"
+ },
+ {
+  "voice_id": "pool_06",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "gb",
+  "description": "Male, about 58, Standard Southern British English, soft baritone"
+ },
+ {
+  "voice_id": "pool_07",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 47, General American English, warm, slightly husky"
+ },
+ {
+  "voice_id": "pool_08",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 66, General American English, older, gentle voice"
+ },
+ {
+  "voice_id": "crew_en_01",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 28, General American English, clear mezzo, friendly"
+ },
+ {
+  "voice_id": "crew_en_02",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "gb",
+  "description": "Female, about 35, Standard Southern British English, calm alto"
+ },
+ {
+  "voice_id": "crew_en_03",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 44, General American English, warm and steady"
+ },
+ {
+  "voice_id": "crew_en_04",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 30, General American English, calm tenor"
+ },
+ {
+  "voice_id": "crew_en_05",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "gb",
+  "description": "Male, about 38, Standard Southern British English, low baritone"
+ },
+ {
+  "voice_id": "crew_en_06",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 50, General American English, measured baritone"
+ }
+]

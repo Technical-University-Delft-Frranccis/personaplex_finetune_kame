@@ -1,0 +1,354 @@
+[
+ {
+  "voice_id": "pax_h_01",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 30, Dutch-accented English, bright mezzo, quick and direct"
+ },
+ {
+  "voice_id": "pax_h_02",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "nl",
+  "description": "Male, about 45, Dutch-accented English, warm baritone, measured"
+ },
+ {
+  "voice_id": "pax_h_03",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "gb",
+  "description": "Female, about 60, Southern British English, warm alto, precise"
+ },
+ {
+  "voice_id": "pax_h_04",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "gb",
+  "description": "Male, about 35, Northern English accent, light tenor, fast"
+ },
+ {
+  "voice_id": "pax_h_05",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 40, General American English, mid pitch, clear"
+ },
+ {
+  "voice_id": "pax_h_06",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 55, General American English, deep, slow and deliberate"
+ },
+ {
+  "voice_id": "pax_h_07",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "de",
+  "description": "Male, about 28, German-accented English, tenor, clipped"
+ },
+ {
+  "voice_id": "pax_h_08",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "fr",
+  "description": "Female, about 50, French-accented English, soft alto"
+ },
+ {
+  "voice_id": "pax_h_09",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "in",
+  "description": "Male, about 40, Indian English, mid baritone, fast"
+ },
+ {
+  "voice_id": "pax_h_10",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "es",
+  "description": "Female, about 27, Spanish-accented English, bright, expressive"
+ },
+ {
+  "voice_id": "pax_h_11",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "sco",
+  "description": "Male, about 65, Scottish English, gravelly baritone"
+ },
+ {
+  "voice_id": "pax_h_12",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "ie",
+  "description": "Female, about 35, Irish English, mezzo, lively"
+ },
+ {
+  "voice_id": "pax_h_13",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "ng",
+  "description": "Male, about 33, Nigerian English, warm baritone"
+ },
+ {
+  "voice_id": "pax_h_14",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "au",
+  "description": "Female, about 45, Australian English, mid pitch, relaxed"
+ },
+ {
+  "voice_id": "pax_h_15",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "male",
+  "origin": "nl",
+  "description": "Male, about 70, Dutch-accented English, older, slightly hoarse"
+ },
+ {
+  "voice_id": "pax_h_16",
+  "role": "passenger",
+  "tier": "hero",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 23, General American English, young, quick, slightly nasal"
+ },
+ {
+  "voice_id": "pax_p_01",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 38, Dutch-accented English, low mezzo"
+ },
+ {
+  "voice_id": "pax_p_02",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "nl",
+  "description": "Male, about 29, Dutch-accented English, light baritone"
+ },
+ {
+  "voice_id": "pax_p_03",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 52, Dutch-accented English, calm alto"
+ },
+ {
+  "voice_id": "pax_p_04",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "gb",
+  "description": "Male, about 60, Southern British English, soft baritone"
+ },
+ {
+  "voice_id": "pax_p_05",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "gb",
+  "description": "Female, about 33, Southern British English, clear soprano"
+ },
+ {
+  "voice_id": "pax_p_06",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "us",
+  "description": "Male, about 47, General American English, raspy baritone"
+ },
+ {
+  "voice_id": "pax_p_07",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "us",
+  "description": "Female, about 58, General American English, warm, slow"
+ },
+ {
+  "voice_id": "pax_p_08",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "de",
+  "description": "Male, about 36, German-accented English, calm baritone"
+ },
+ {
+  "voice_id": "pax_p_09",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "de",
+  "description": "Female, about 31, German-accented English, bright mezzo"
+ },
+ {
+  "voice_id": "pax_p_10",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "fr",
+  "description": "Male, about 44, French-accented English, mellow tenor"
+ },
+ {
+  "voice_id": "pax_p_11",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "in",
+  "description": "Female, about 62, Indian English, soft alto"
+ },
+ {
+  "voice_id": "pax_p_12",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "es",
+  "description": "Male, about 25, Spanish-accented English, quick tenor"
+ },
+ {
+  "voice_id": "pax_p_13",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "ie",
+  "description": "Female, about 48, Irish English, warm mezzo"
+ },
+ {
+  "voice_id": "pax_p_14",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "au",
+  "description": "Male, about 53, Australian English, relaxed baritone"
+ },
+ {
+  "voice_id": "pax_p_15",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "ng",
+  "description": "Female, about 29, Nigerian English, bright mezzo"
+ },
+ {
+  "voice_id": "pax_p_16",
+  "role": "passenger",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "gb",
+  "description": "Male, about 68, Southern British English, older, gentle"
+ },
+ {
+  "voice_id": "crew_01",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 28, Dutch-accented English, clear mezzo, friendly"
+ },
+ {
+  "voice_id": "crew_02",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 35, Dutch-accented English, calm alto"
+ },
+ {
+  "voice_id": "crew_03",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 42, Dutch-accented English, warm, steady"
+ },
+ {
+  "voice_id": "crew_04",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 24, Dutch-accented English, bright, quick"
+ },
+ {
+  "voice_id": "crew_05",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "nl",
+  "description": "Male, about 30, Dutch-accented English, calm tenor"
+ },
+ {
+  "voice_id": "crew_06",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "nl",
+  "description": "Male, about 38, Dutch-accented English, low baritone"
+ },
+ {
+  "voice_id": "crew_07",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "nl",
+  "description": "Male, about 50, Dutch-accented English, measured baritone"
+ },
+ {
+  "voice_id": "crew_08",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 31, Flemish-accented English, soft mezzo"
+ },
+ {
+  "voice_id": "crew_09",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 45, Southern British English, crisp alto"
+ },
+ {
+  "voice_id": "crew_10",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "nl",
+  "description": "Male, about 34, Southern British English, light tenor"
+ },
+ {
+  "voice_id": "crew_11",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "female",
+  "origin": "nl",
+  "description": "Female, about 29, Indonesian-Dutch accented English, gentle mezzo"
+ },
+ {
+  "voice_id": "crew_12",
+  "role": "crew",
+  "tier": "pool",
+  "gender": "male",
+  "origin": "nl",
+  "description": "Male, about 41, General American English, even baritone"
+ }
+]
