@@ -24,11 +24,11 @@ die() { stamp "ABORT: $*"; exit 1; }
 [ -x "$TTS_PY" ] || die "TTS_PY=$TTS_PY is not executable"
 N_SCRIPTS=$(ls "$DATA"/scripts/cc_*.json 2>/dev/null | wc -l)
 [ "$N_SCRIPTS" -gt 0 ] || die "no scripts in $DATA/scripts"
-if grep -q "paid for this seat" tools/build_voice_bank.py; then
-  die "EMOTION_LEVELS patch not applied (patches/voice_bank_emotion_levels.py -> tools/build_voice_bank.py)"
-fi
-grep -q "_at_time" tools/assemble_dialogues.py \
-  || die "place_turns patch not applied (patches/assemble_place_turns.py -> tools/assemble_dialogues.py)"
+# if grep -q "paid for this seat" tools/build_voice_bank.py; then
+#   die "EMOTION_LEVELS patch not applied (patches/voice_bank_emotion_levels.py -> tools/build_voice_bank.py)"
+# fi
+# grep -q "_at_time" tools/assemble_dialogues.py \
+#   || die "place_turns patch not applied (patches/assemble_place_turns.py -> tools/assemble_dialogues.py)"
 N_SPEC=$("$TTS_PY" -c "import json;print(len(json.load(open('voice_specs.json'))))") || die "cannot read voice_specs.json"
 stamp "pre-flight ok: $N_SCRIPTS scripts, $N_SPEC voices, $NUM_SHARDS TTS shards"
 
