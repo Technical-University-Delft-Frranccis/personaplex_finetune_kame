@@ -385,6 +385,13 @@ def preprocess_function(
             f"Expected {len(list_of_streams)} == {len(list_of_oracle_events)}"
         )
 
+    # [personaplex-prompt-mask] 1.5 prompt prefix lengths, same order as main_speaker_streams()
+    list_of_prompt_frames: list[int] | None = None
+    if all(f"{sp}_prompt_frames" in batched_examples for sp in speakers):
+        list_of_prompt_frames = [
+            int(p) for sp in speakers for p in batched_examples[f"{sp}_prompt_frames"]
+        ]
+
     # 2. delay and pad streams
     list_of_streams = delay_and_pad_streams(
         list_of_streams=list_of_streams,
@@ -401,6 +408,16 @@ def preprocess_function(
             text_delay=delays[0],
         )
 
+    # [personaplex-prompt-mask] 3.0 prompted rows must not be split
+    if list_of_prompt_frames is not None and max_length is not None:
+        too_long = [int(s.shape[1]) for s in list_of_streams if int(s.shape[1]) > int(max_length)]
+        if too_long:
+            raise ValueError(
+                f"{len(too_long)} prompted rows exceed max_length={max_length} (longest "
+                f"{max(too_long)}). Raise --max_length or lower --max_frames in "
+                "tools/add_personaplex_prompt.py."
+            )
+
     # 3. split streams by max length
     if max_length is not None:
         if list_of_oracle_events is not None:
@@ -411,6 +428,14 @@ def preprocess_function(
             )
         else:
             list_of_streams = split_streams(list_of_streams=list_of_streams, max_length=max_length)
+
+    # [personaplex-prompt-mask] 4.0 keep prompt list aligned with min_length filtering
+    if list_of_prompt_frames is not None and min_length is not None:
+        list_of_prompt_frames = [
+            p
+            for s, p in zip(list_of_streams, list_of_prompt_frames, strict=True)
+            if int(s.shape[1]) >= int(min_length)
+        ]
 
     # 4. filter out short streams
     if min_length is not None:
@@ -432,6 +457,12 @@ def preprocess_function(
         initial_token_ids=initial_token_ids,
         zero_token_id=zero_token_id,
     )
+
+    # [personaplex-prompt-mask] 5.5 no loss on the system prompt (column 1 + delay + frame after delay_and_pad)
+    if list_of_prompt_frames is not None:
+        for labels, p in zip(list_of_labels, list_of_prompt_frames, strict=True):
+            for i, d in enumerate(delays):
+                labels[i, : 1 + int(d) + p] = zero_token_id
 
     list_of_num_streams = [streams.shape[0] for streams in list_of_streams]
     list_of_num_frames = [streams.shape[1] for streams in list_of_streams]

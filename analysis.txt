@@ -1,0 +1,440 @@
+
+====================================================================================================
+A. FUNNEL
+====================================================================================================
+  assembled            511    54%
+  voice_rejected       365    38%
+  assembly_rejected      5     1%
+  tts_failed            73     8%
+  not_rendered           1     0%
+  total scripts        955
+
+====================================================================================================
+B. ASSEMBLED CORPUS
+====================================================================================================
+  dialogues 511, total 11.62 h, duration mean 82s min 32s max 200s
+  < 20 s (dropped by add_personaplex_prompt): 0   > 180 s (likely truncated at --max_frames 2400 incl. prompt): 3
+  turns/dialogue mean 16.6; backchannels total 300, interruptions total 2
+
+  passenger TURNS by emotion x intensity  (assembled / all scripts)
+  emotion              int 0         int 1         int 2         int 3    kept
+  irritated              2/6       397/894       289/716         37/65     43%
+  anxious                3/7       437/832       282/636         45/67     50%
+  neutral           931/1311       100/180           0/0           0/0     69%
+  angry                  0/0           3/9        88/332       151/429     31%
+  relieved           226/424       163/329           2/3           0/0     52%
+  sad                   8/31       263/534         37/93           0/0     47%
+  grateful           221/350       171/227           4/6           0/0     68%
+  distressed             0/0         34/64       114/273         36/78     44%
+  embarrassed          11/27       140/316         34/68           1/2     45%
+  sulking               9/25        58/173         16/51           0/0     33%
+
+====================================================================================================
+C. YIELD BY SCENARIO / CHARACTER FIELD  (asm=assembled vrej=voice-rejected arej=assembly-rejected ttsF=not rendered)
+====================================================================================================
+
+  scenario.group  (4 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  conflict                                   345   136   173     0    36    39%
+  distress                                   330   154   141     3    32    47%
+  neutral                                    160   119    34     2     5    74%
+  positive                                   120   102    17     0     1    85%
+
+  scenario.category  (36 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  upgrade_demand                              37    15    20     0     2    41%
+  solo_elderly_traveller                      37    23    11     0     3    62%
+  meal_ran_out                                36    13    16     0     7    36%
+  crying_baby                                 33    19    14     0     0    58%
+  compliment                                  31    26     5     0     0    84%
+  honest_finder                               30    28     2     0     0    93%
+  curious_traveller                           30    26     4     0     0    87%
+  seat_change_request                         30    24     6     0     0    80%
+  embarrassed_parent                          29    17    11     0     1    59%
+  uncomfortable_neighbour                     29    10    15     0     4    34%
+  celebration                                 29    22     6     0     1    76%
+  help_with_bag                               28    21     6     1     0    75%
+  ... 24 more values
+
+  scenario.phase  (7 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  cruise_quiet                               329   177   125     0    27    54%
+  cruise_service                             157    71    70     0    16    45%
+  boarding                                   141    83    49     0     9    59%
+  descent                                    132    72    47     2    11    55%
+  cruise_night                               121    61    51     2     7    50%
+  after_landing                               54    38    12     1     3    70%
+  taxi_out                                    21     9    11     0     1    43%
+
+  scenario.flight_type  (4 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  long_haul_night                            344   180   137     4    23    52%
+  short_haul_evening                         209   116    75     0    18    56%
+  long_haul_day                              204   103    85     0    16    50%
+  short_haul_day                             198   112    68     1    17    57%
+
+  scenario.cabin_class  (3 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  economy                                    753   399   294     4    56    53%
+  business                                   129    69    48     1    11    53%
+  premium_comfort                             73    43    23     0     7    59%
+
+  scenario.outcome  (4 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  partial                                    393   205   149     4    35    52%
+  resolved                                   357   210   128     1    18    59%
+  unresolved                                 150    75    59     0    16    50%
+  escalated                                   55    21    29     0     5    38%
+
+  scenario.arc  (25 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  anxious and speeding up, steadier each t    60    27    27     0     6    45%
+  eases a little but a sore spot remains,     60    22    31     0     7    37%
+  slightly worried by one detail, reassure    58    50     7     0     1    86%
+  sad and withdrawn throughout, answers br    53    25    21     3     4    47%
+  polite but short, a bit tired, accepts a    52    39    12     0     1    75%
+  composed on the surface, one detail make    52    29    20     0     3    56%
+  mostly calm, a little disappointed that     51    42     7     1     1    82%
+  angry then embarrassed, ends quiet and w    50    14    28     0     8    28%
+  calm and friendly throughout, one small     48    39     7     0     2    81%
+  irritated all the way, accepts the pract    44    28    12     0     4    64%
+  starts embarrassed, apologises too much,    44    18    23     0     3    41%
+  starts upset, eases one small step at a     41    12    26     0     3    29%
+  ... 13 more values
+
+  scenario.profanity  (3 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  none                                       596   346   198     3    49    58%
+  mild                                       277   139   120     2    16    50%
+  strong                                      82    26    47     0     9    32%
+
+  scenario.opener  (2 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  crew                                       718   376   279     3    60    52%
+  passenger                                  237   135    86     2    14    57%
+
+  scenario.modifier  (11 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+                                             490   256   193     5    36    52%
+  a bit hard of hearing and sometimes asks    59    27    28     0     4    46%
+  exhausted after a long day                  56    28    25     0     3    50%
+  has a tight connection after landing        50    28    13     0     9    56%
+  travelling with a partner who is asleep     49    29    16     0     4    59%
+  trying to work on a laptop                  49    26    19     0     4    53%
+  speaks English as a second language and     48    26    19     0     3    54%
+  a frequent flyer who knows the routines     41    24    14     0     3    59%
+  has not flown in years                      40    28     8     0     4    70%
+  on the way to an important work meeting     39    22    14     0     3    56%
+  travelling for a family event               34    17    16     0     1    50%
+
+  scenario.goal  (64 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  you think your status or a broken seat e    37    15    20     0     2    41%
+  it is the first time you travel alone si    37    23    11     0     3    62%
+  the baby in front of you has been crying    33    19    14     0     0    58%
+  you found someone's wallet in the seat p    30    28     2     0     0    93%
+  you noticed an empty row and ask if you     30    24     6     0     0    80%
+  the man next to you keeps talking to you    29    10    15     0     4    34%
+  you cannot lift your bag into the bin       28    21     6     1     0    75%
+  you ask about the arrival time and how t    28    20     8     0     0    71%
+  you want to know where your connecting f    27    21     3     0     3    78%
+  you spilled a hot drink over your neighb    27    13    12     0     2    48%
+  you and your partner are seated apart an    25     8    14     0     3    32%
+  your child has a fever and is crying and    23    13    10     0     0    57%
+  ... 52 more values
+
+  crew_performance  (4 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  good                                       366   208   130     2    26    57%
+  adequate                                   277   134   123     2    18    48%
+  exemplary                                  175   100    56     1    18    57%
+  poor                                       137    69    56     0    12    50%
+
+  crew_mistake  (10 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+                                             541   308   186     3    44    57%
+  explains the rule before acknowledging t    80    31    43     0     6    39%
+  rushes off to the next row too early        67    37    24     0     6    55%
+  talks loudly enough for the neighbours t    62    33    25     0     4    53%
+  uses a scripted apology that sounds insi    61    26    30     1     4    43%
+  gets defensive when blamed personally       52    29    20     0     3    56%
+  promises something and then has to take     45    21    20     1     3    47%
+  says no flatly without offering anything    44    26    16     0     2    59%
+  lectures about the alcohol rules             2     0     0     0     2     0%
+  insists on the rule without looking for      1     0     1     0     0     0%
+
+  baseline_emotion  (8 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  neutral                                    290   207    74     2     7    71%
+  irritated                                  244    96   123     0    25    39%
+  anxious                                    213    99    84     2    28    46%
+  embarrassed                                 67    30    30     0     7    45%
+  sad                                         64    33    27     1     3    52%
+  distressed                                  40    20    18     0     2    50%
+  angry                                       20    10     8     0     2    50%
+  grateful                                    17    16     1     0     0    94%
+
+  peak_intensity  (4 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  2                                          421   185   201     3    32    44%
+  1                                          282   184    79     2    17    65%
+  3                                          176    75    78     0    23    43%
+  0                                           76    67     7     0     2    88%
+
+  tier  (2 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  hero                                       839   403   360     3    73    48%
+  pool                                       116   108     5     2     1    93%
+
+  passenger_emotions  (212 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  anxious|relieved                            40    19    18     0     3    48%
+  grateful|neutral                            38    28     8     1     1    74%
+  irritated|neutral                           34    23    11     0     0    68%
+  grateful|neutral|relieved                   33    30     2     0     1    91%
+  angry|irritated                             32    14    17     0     1    44%
+  irritated                                   32    19     9     0     4    59%
+  neutral                                     31    27     4     0     0    87%
+  anxious|grateful|neutral|relieved           28    23     5     0     0    82%
+  irritated|neutral|sulking                   26    11    13     0     2    42%
+  angry|irritated|sulking                     26     6    16     0     4    23%
+  anxious|grateful|relieved                   25    11    12     0     2    44%
+  grateful|irritated|neutral|relieved         23     8    14     0     1    35%
+  ... 200 more values
+
+  crew_voice  (6 values)
+  value                                    total   asm  vrej  arej  ttsF  yield
+  crew_en_02                                 176    89    74     1    12    51%
+  crew_en_06                                 171   106    52     0    13    62%
+  crew_en_04                                 160    74    65     2    19    46%
+  crew_en_01                                 150    76    62     1    11    51%
+  crew_en_03                                 149    80    57     1    11    54%
+  crew_en_05                                 149    86    55     0     8    58%
+
+====================================================================================================
+D. PASSENGER VOICES
+====================================================================================================
+  voice        tier      n  asm vrej  yield  sim calm  sim emo   drop  worst refs (mean sim, n)
+  hero_02      hero     66    7   34    11%     0.950    0.840  0.110  anxious_1 0.77 (3), irritated_2 0.79 (29), distressed_2 0.80 (36)
+  hero_09      hero     95   26   68    27%     0.949    0.860  0.089  angry_2 0.80 (44), distressed_2 0.81 (21), embarrassed_1 0.81 (42)
+  hero_07      hero     89   26   58    29%     0.950    0.872  0.078  angry_2 0.83 (33), irritated_1 0.84 (101), sulking_1 0.84 (20)
+  hero_08      hero     82   28   41    34%     0.969    0.895  0.074  angry_3 0.78 (3), irritated_1 0.82 (57), angry_2 0.87 (25)
+  hero_05      hero     91   40   44    44%     0.955    0.891  0.064  relieved_1 0.81 (21), angry_2 0.86 (55), anxious_2 0.86 (71)
+  hero_01      hero     77   42   32    55%     0.955    0.911  0.044  distressed_2 0.88 (31), irritated_1 0.89 (65), embarrassed_1 0.89 (26)
+  hero_03      hero     88   50   31    57%     0.946    0.903  0.043  angry_3 0.83 (25), anxious_2 0.87 (77), relieved_1 0.90 (39)
+  hero_04      hero     81   48   29    59%     0.950    0.911  0.039  angry_2 0.85 (32), angry_3 0.88 (45), relieved_1 0.89 (34)
+  pool_04      pool      9    6    2    67%     0.952    0.957 -0.005  neutral 0.95 (67)
+  hero_10      hero     79   63    9    80%     0.962    0.927  0.035  angry_3 0.89 (28), anxious_1 0.91 (60), anxious_2 0.92 (52)
+  hero_06      hero     91   73   14    80%     0.966    0.938  0.028  relieved_1 0.90 (41), angry_2 0.91 (34), sad_2 0.92 (8)
+  pool_08      pool     17   14    2    82%     0.961    0.966 -0.005  neutral 0.96 (125)
+  pool_05      pool     11   10    0    91%     0.966    0.972 -0.006  neutral 0.97 (91)
+  pool_06      pool     20   19    1    95%     0.960    0.964 -0.005  neutral 0.96 (159)
+  pool_01      pool     12   12    0   100%     0.960    0.964 -0.003  neutral 0.96 (95)
+  pool_02      pool     11   11    0   100%     0.963    0.959  0.003  neutral 0.96 (80)
+  pool_03      pool     22   22    0   100%     0.969    0.967  0.002  neutral 0.97 (165)
+  pool_07      pool     14   14    0   100%     0.969    0.972 -0.002  neutral 0.97 (95)
+
+  voice-bank emotion references for the 8 lowest-yield HERO voices (registry similarity to anchor, source) vs. mean similarity of turns rendered from that ref
+  hero_02:
+     angry_2        ref sim 0.834 design          turns: n= 14 mean 0.853 min 0.792
+     angry_3        ref sim 0.965 clone_fallback  turns: n= 38 mean 0.949 min 0.879
+     anxious_1      ref sim 0.809 design          turns: n=  3 mean 0.766 min 0.757
+     anxious_2      ref sim 0.839 design          turns: n= 22 mean 0.805 min 0.751
+     distressed_2   ref sim 0.813 design          turns: n= 36 mean 0.799 min 0.750
+     embarrassed_1  ref sim 0.883 design          turns: n= 20 mean 0.848 min 0.795
+     grateful_1     ref sim 0.871 design          turns: n= 12 mean 0.816 min 0.777
+     irritated_1    ref sim 0.906 design          turns: n= 41 mean 0.845 min 0.761
+     irritated_2    ref sim 0.819 design          turns: n= 29 mean 0.790 min 0.753
+     neutral        ref sim 1.000 design_medoid   turns: n= 89 mean 0.950 min 0.818
+     relieved_1     ref sim 0.852 design          turns: n= 16 mean 0.836 min 0.759
+     sad_1          ref sim 0.877 design          turns: n= 15 mean 0.838 min 0.780
+     sad_2          ref sim 0.872 design          turns: n=  3 mean 0.866 min 0.818
+     sulking_1      ref sim 0.841 design          turns: n= 12 mean 0.811 min 0.763
+  hero_09:
+     angry_2        ref sim 0.814 design          turns: n= 44 mean 0.795 min 0.751
+     angry_3        ref sim 0.966 clone_fallback  turns: n= 35 mean 0.944 min 0.861
+     anxious_1      ref sim 0.965 clone_fallback  turns: n= 84 mean 0.934 min 0.757
+     anxious_2      ref sim 0.877 design          turns: n= 96 mean 0.836 min 0.751
+     distressed_2   ref sim 0.836 design          turns: n= 21 mean 0.807 min 0.753
+     embarrassed_1  ref sim 0.851 design          turns: n= 42 mean 0.808 min 0.759
+     grateful_1     ref sim 0.908 design          turns: n= 26 mean 0.871 min 0.828
+     irritated_1    ref sim 0.883 design          turns: n=102 mean 0.855 min 0.751
+     irritated_2    ref sim 0.846 design          turns: n=105 mean 0.851 min 0.776
+     neutral        ref sim 1.000 design_medoid   turns: n=196 mean 0.949 min 0.764
+     relieved_1     ref sim 0.838 design          turns: n= 34 mean 0.828 min 0.760
+     sad_1          ref sim 0.847 design          turns: n= 47 mean 0.842 min 0.762
+     sad_2          ref sim 0.954 design          turns: n= 11 mean 0.938 min 0.914
+     sulking_1      ref sim 0.956 clone_fallback  turns: n= 31 mean 0.904 min 0.754
+  hero_07:
+     angry_2        ref sim 0.834 design          turns: n= 33 mean 0.829 min 0.759
+     angry_3        ref sim 0.960 clone_fallback  turns: n= 45 mean 0.952 min 0.904
+     anxious_1      ref sim 0.918 design          turns: n= 98 mean 0.879 min 0.771
+     anxious_2      ref sim 0.884 design          turns: n= 46 mean 0.864 min 0.757
+     distressed_2   ref sim 0.907 design          turns: n= 21 mean 0.859 min 0.757
+     embarrassed_1  ref sim 0.909 design          turns: n= 30 mean 0.875 min 0.752
+     grateful_1     ref sim 0.932 design          turns: n= 15 mean 0.880 min 0.803
+     irritated_1    ref sim 0.867 design          turns: n=101 mean 0.841 min 0.753
+     irritated_2    ref sim 0.932 design          turns: n= 69 mean 0.882 min 0.829
+     neutral        ref sim 1.000 design_medoid   turns: n=215 mean 0.950 min 0.808
+     relieved_1     ref sim 0.876 design          turns: n= 19 mean 0.860 min 0.816
+     sad_1          ref sim 0.916 design          turns: n= 50 mean 0.894 min 0.773
+     sad_2          ref sim 0.851 design          turns: n= 12 mean 0.863 min 0.822
+     sulking_1      ref sim 0.881 design          turns: n= 20 mean 0.842 min 0.752
+  hero_08:
+     angry_2        ref sim 0.880 design          turns: n= 25 mean 0.871 min 0.797
+     angry_3        ref sim 0.802 design          turns: n=  3 mean 0.778 min 0.765
+     anxious_1      ref sim 0.917 design          turns: n= 69 mean 0.902 min 0.788
+     anxious_2      ref sim 0.913 design          turns: n= 77 mean 0.888 min 0.784
+     distressed_2   ref sim 0.938 design          turns: n= 41 mean 0.917 min 0.869
+     embarrassed_1  ref sim 0.935 design          turns: n= 17 mean 0.908 min 0.838
+     grateful_1     ref sim 0.951 design          turns: n= 19 mean 0.924 min 0.869
+     irritated_1    ref sim 0.815 design          turns: n= 57 mean 0.819 min 0.765
+     irritated_2    ref sim 0.902 design          turns: n= 67 mean 0.901 min 0.784
+     neutral        ref sim 1.000 design_medoid   turns: n=158 mean 0.969 min 0.874
+     relieved_1     ref sim 0.932 design          turns: n= 34 mean 0.929 min 0.878
+     sad_1          ref sim 0.920 design          turns: n= 51 mean 0.915 min 0.809
+     sad_2          ref sim 0.963 design          turns: n= 12 mean 0.939 min 0.849
+     sulking_1      ref sim 0.933 design          turns: n= 16 mean 0.928 min 0.828
+  hero_05:
+     angry_2        ref sim 0.896 design          turns: n= 55 mean 0.860 min 0.772
+     angry_3        ref sim 0.916 design          turns: n= 63 mean 0.892 min 0.788
+     anxious_1      ref sim 0.960 design          turns: n= 44 mean 0.935 min 0.828
+     anxious_2      ref sim 0.880 design          turns: n= 71 mean 0.864 min 0.758
+     distressed_2   ref sim 0.933 design          turns: n= 45 mean 0.887 min 0.817
+     embarrassed_1  ref sim 0.886 design          turns: n= 36 mean 0.896 min 0.840
+     grateful_1     ref sim 0.936 design          turns: n= 16 mean 0.916 min 0.875
+     irritated_1    ref sim 0.913 design          turns: n= 61 mean 0.893 min 0.831
+     irritated_2    ref sim 0.944 design          turns: n= 70 mean 0.918 min 0.863
+     neutral        ref sim 1.000 design_medoid   turns: n=185 mean 0.955 min 0.770
+     relieved_1     ref sim 0.813 design          turns: n= 21 mean 0.811 min 0.758
+     sad_1          ref sim 0.937 design          turns: n= 44 mean 0.896 min 0.830
+     sad_2          ref sim 0.958 design          turns: n=  9 mean 0.921 min 0.889
+     sulking_1      ref sim 0.956 design          turns: n= 21 mean 0.911 min 0.834
+  hero_01:
+     angry_2        ref sim 0.960 design          turns: n= 16 mean 0.922 min 0.865
+     angry_3        ref sim 0.909 design          turns: n= 50 mean 0.895 min 0.827
+     anxious_1      ref sim 0.929 design          turns: n= 51 mean 0.913 min 0.798
+     anxious_2      ref sim 0.950 design          turns: n= 54 mean 0.901 min 0.845
+     distressed_2   ref sim 0.912 design          turns: n= 31 mean 0.884 min 0.782
+     embarrassed_1  ref sim 0.909 design          turns: n= 26 mean 0.891 min 0.843
+     grateful_1     ref sim 0.931 design          turns: n= 15 mean 0.940 min 0.892
+     irritated_1    ref sim 0.918 design          turns: n= 65 mean 0.887 min 0.827
+     irritated_2    ref sim 0.935 design          turns: n= 80 mean 0.942 min 0.856
+     neutral        ref sim 1.000 design_medoid   turns: n=192 mean 0.955 min 0.752
+     relieved_1     ref sim 0.943 design          turns: n= 26 mean 0.898 min 0.791
+     sad_1          ref sim 0.941 design          turns: n= 33 mean 0.938 min 0.824
+     sad_2          ref sim 0.957 design          turns: n=  5 mean 0.952 min 0.942
+     sulking_1      ref sim 0.945 design          turns: n= 13 mean 0.939 min 0.815
+  hero_03:
+     angry_2        ref sim 0.920 design          turns: n= 27 mean 0.919 min 0.879
+     angry_3        ref sim 0.875 design          turns: n= 25 mean 0.826 min 0.764
+     anxious_1      ref sim 0.900 design          turns: n= 84 mean 0.909 min 0.771
+     anxious_2      ref sim 0.917 design          turns: n= 77 mean 0.868 min 0.815
+     distressed_2   ref sim 0.898 design          turns: n= 32 mean 0.896 min 0.837
+     embarrassed_1  ref sim 0.930 design          turns: n= 58 mean 0.896 min 0.768
+     grateful_1     ref sim 0.965 design          turns: n= 15 mean 0.926 min 0.893
+     irritated_1    ref sim 0.943 design          turns: n= 71 mean 0.918 min 0.863
+     irritated_2    ref sim 0.949 design          turns: n= 84 mean 0.932 min 0.862
+     neutral        ref sim 1.000 design_medoid   turns: n=178 mean 0.946 min 0.773
+     relieved_1     ref sim 0.915 design          turns: n= 39 mean 0.895 min 0.839
+     sad_1          ref sim 0.945 design          turns: n= 50 mean 0.911 min 0.752
+     sad_2          ref sim 0.961 design          turns: n=  7 mean 0.932 min 0.895
+     sulking_1      ref sim 0.934 design          turns: n= 23 mean 0.903 min 0.763
+  hero_04:
+     angry_2        ref sim 0.872 design          turns: n= 32 mean 0.849 min 0.785
+     angry_3        ref sim 0.890 design          turns: n= 45 mean 0.882 min 0.793
+     anxious_1      ref sim 0.909 design          turns: n= 95 mean 0.917 min 0.838
+     anxious_2      ref sim 0.935 design          turns: n= 88 mean 0.918 min 0.841
+     distressed_2   ref sim 0.940 design          turns: n= 37 mean 0.913 min 0.851
+     embarrassed_1  ref sim 0.927 design          turns: n= 15 mean 0.891 min 0.769
+     grateful_1     ref sim 0.933 design          turns: n=  2 mean 0.897 min 0.885
+     irritated_1    ref sim 0.972 design          turns: n= 82 mean 0.948 min 0.857
+     irritated_2    ref sim 0.933 design          turns: n= 62 mean 0.919 min 0.845
+     neutral        ref sim 1.000 design_medoid   turns: n=131 mean 0.950 min 0.770
+     relieved_1     ref sim 0.891 design          turns: n= 34 mean 0.887 min 0.799
+     sad_1          ref sim 0.944 design          turns: n= 69 mean 0.908 min 0.766
+     sad_2          ref sim 0.951 design          turns: n=  6 mean 0.908 min 0.801
+     sulking_1      ref sim 0.929 design          turns: n= 19 mean 0.916 min 0.871
+
+  per reference key across ALL voices (is one emotion level bad everywhere?)
+     angry_2        n=  300 mean 0.865  p10 0.795
+     anxious_2      n=  642 mean 0.882  p10 0.817
+     relieved_1     n=  287 mean 0.883  p10 0.815
+     distressed_2   n=  361 mean 0.890  p10 0.806
+     irritated_1    n=  730 mean 0.891  p10 0.817
+     embarrassed_1  n=  347 mean 0.894  p10 0.814
+     sulking_1      n=  182 mean 0.905  p10 0.815
+     irritated_2    n=  684 mean 0.906  p10 0.834
+     angry_3        n=  371 mean 0.907  p10 0.844
+     sad_1          n=  468 mean 0.907  p10 0.835
+     anxious_1      n=  640 mean 0.912  p10 0.862
+     grateful_1     n=  161 mean 0.914  p10 0.838
+     sad_2          n=   81 mean 0.919  p10 0.849
+     neutral        n= 2560 mean 0.958  p10 0.928
+
+====================================================================================================
+E. VOICE-CONSISTENCY REJECTIONS
+====================================================================================================
+  365 rejected; by rule: {'spread': 225, 'min': 99, 'emotional': 41}  (min=min similarity, spread=max-min, emotional=calm-vs-emo drop)
+     spread     value median 0.150  range 0.120-0.200
+     min        value median 0.770  range 0.750-0.780
+     emotional  value median 0.070  range 0.060-0.090
+
+  the LOWEST-similarity passenger turn of each rejected dialogue:
+     is a backchannel: 2%   <= 2 words: 15%   <= 4 words: 26%   clip < 1.0 s: 4%
+     intensity: [(0, 25), (1, 186), (2, 126), (3, 28)]
+     ref key:   [('irritated_1', 63), ('angry_2', 46), ('anxious_2', 42), ('anxious_1', 33), ('neutral', 29), ('relieved_1', 25), ('distressed_2', 24), ('sad_1', 24)]
+     examples (sim, ref, words, dur, text):
+       0.750 distressed_2 11w  4.1s  'I have some ibuprofen, but he won’t take it. He’s shivering.'
+       0.751 irritated_1   2w  1.8s  'Right. Thanks.'
+       0.751 angry_2      13w  3.9s  "A report? I'm eating right now. I need something to do with this."
+       0.751 anxious_2    10w  4.0s  'Wait. The wheels are down. Why are we still moving?'
+       0.751 anxious_2     4w  2.3s  'A blanket. Yeah. Okay.'
+       0.752 embarrassed_1  4w  2.3s  'Juice? At this hour?'
+       0.752 sad_1         2w  1.4s  "I'll try."
+       0.752 distressed_2  6w  2.1s  "I haven't slept in two days."
+       0.752 sulking_1     2w  1.8s  'Cooperation. Whatever.'
+       0.752 neutral       1w  0.6s  'Okay.'
+       0.752 distressed_2 10w  3.3s  "Thank you. I just... I don't know what to do."
+       0.753 irritated_2  21w  7.4s  "Ground staff? We are in the air. I can't go to ground staff. Can you c"
+
+====================================================================================================
+F. SIMILARITY vs CLIP LENGTH / INTENSITY (all rendered passenger turns)
+====================================================================================================
+  by length:
+     bc           n=   35 mean 0.898  p10 0.792  < 0.78: 3%
+     1-2w         n=  260 mean 0.872  p10 0.786  < 0.78: 9%
+     3-5w         n=  728 mean 0.905  p10 0.827  < 0.78: 2%
+     6-10w        n= 2732 mean 0.916  p10 0.837  < 0.78: 1%
+     11+w         n= 4059 mean 0.923  p10 0.847  < 0.78: 1%
+  by intensity:
+     int 0        n= 2075 mean 0.957  p10 0.927  < 0.78: 0%
+     int 1        n= 3220 mean 0.909  p10 0.832  < 0.78: 2%
+     int 2        n= 1958 mean 0.893  p10 0.817  < 0.78: 3%
+     int 3        n=  561 mean 0.900  p10 0.833  < 0.78: 2%
+
+====================================================================================================
+G. WHAT-IF: filter thresholds (counts over all dialogues that have similarity data)
+====================================================================================================
+  min_sim spread  drop ignore<=w  pass(all)  recovered  recovered by voice
+     0.78   0.12  0.06      none   516/881           0  []
+     0.78   0.12  0.06      bc+2   555/881          43  [('hero_03', 7), ('hero_07', 6), ('hero_10', 5), ('hero_04', 5)]
+     0.78   0.12  0.06      bc+4   590/881          80  [('hero_07', 14), ('hero_04', 14), ('hero_03', 10), ('hero_06', 8)]
+     0.75   0.15  0.08      none   676/881         160  [('hero_07', 25), ('hero_05', 24), ('hero_01', 21), ('hero_08', 19)]
+     0.75   0.15  0.08      bc+2   703/881         187  [('hero_07', 27), ('hero_01', 25), ('hero_05', 24), ('hero_03', 20)]
+     0.72   0.18  0.10      none   774/881         258  [('hero_07', 44), ('hero_09', 39), ('hero_05', 33), ('hero_08', 30)]
+     0.72   0.18  0.10      bc+2   786/881         270  [('hero_07', 44), ('hero_09', 42), ('hero_05', 33), ('hero_08', 29)]
+  (first row should reproduce the current filter; 'ignore<=w' drops backchannels and turns of <= w words
+   from the check, since WavLM x-vectors on sub-second clips are noisy)
+
+====================================================================================================
+H. ASSEMBLY REJECTS AND TTS FAILURES
+====================================================================================================
+  assembly_rejected: 5
+        5  ? (no line in assemble.log)
+  tts_failed: 73
+       73  ? (no line in tts logs - crash/OOM?)
+  not_rendered: 1
+        1  ? (no line in tts logs)
+
+wrote data/cabin/analysis/per_dialogue.csv and data/cabin/analysis/rerender_candidates.json
